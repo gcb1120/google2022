@@ -95,6 +95,31 @@ git checkout develop
 git pull --rebase origin develop
 ```
 更多详情：[https://blog.csdn.net/m0_46636892/article/details/122985420](https://blog.csdn.net/m0_46636892/article/details/122985420)
+
+## 成员提交代码到自己分支
+```shell
+# 新建自己的分支
+git checkout -b "你的分支名"
+# 提交到自己分支
+git add .
+git commit -m "描述"
+git  push -u origin "你的分支名" #去掉冒号
+```
+## 成员将自己分支代码合并到develop分支
+```shell
+想将自己的dev分支合并到develop分支，操作如下：
+    1、首先切换到develop分支上
+    	git  checkout develop
+    2.我们项目是多人开发，所以需要把远程develop上的代码pull下来
+    	git pull origin develop
+    3.然后我们把dev分支的代码合并到develop上
+    	git  merge dev
+    4。然后查看状态及执行提交命令
+    	git status
+    	git push origin develop
+```
+
+
 ## 分支的合并
 
 git merge和git rebase两个命令来进行分支的合并。
