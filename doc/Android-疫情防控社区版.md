@@ -103,7 +103,7 @@ git checkout -b "你的分支名"
 # 提交到自己分支
 git add .
 git commit -m "描述"
-git  push -u origin "你的分支名" #去掉冒号
+git push -u origin "你的分支名" #去掉冒号
 ```
 ## 成员将自己分支代码合并到develop分支
 ```shell
