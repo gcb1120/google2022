@@ -7,6 +7,7 @@
 ## #linux相关命令
 
 ```shell
+
 ls(ll): 都是列出当前目录中的所有文件，只不过ll(两个ll)列出的内容更为详细。
 touch : 新建一个文件 如 touch index.js 就会在当前目录下新建一个index.js文件。
 rm: 删除一个文件, rm index.js 就会把index.js文件删除。
@@ -29,6 +30,9 @@ git add .
 #上传代码到中间缓存区 
 git commit -m "备注信息"
 
+#上传代码到远程仓库（例如：Gitee） 
+git push
+
 #git清理被删除远程分支在本地库的缓存 
 #使用git过程中，如果远程分支被删除，在本地使用git branch -a还是可以看到这些被删除分支。可以通过git remote prune 命令实现清理
 git remote prune origin 
@@ -37,7 +41,7 @@ git remote prune origin
 git fetch
 ```
 
-查看详情：[https://blog.csdn.net/A12115419/article/details/116116418](https://blog.csdn.net/A12115419/article/details/116116418)
+https://blog.csdn.net/A12115419/article/details/116116418
 
 ```shell
 #创建分支
@@ -54,13 +58,9 @@ git checkout -b 分支名
 
 新建本地分支与远程分支关联
 git branch --set-upstream-to=origin/develop develop
-
-#上传代码到远程仓库（例如：Gitee） 
-git push
 ~~~
 
 ## 个人开发使用git完整指令
-来自csdn：[https://blog.csdn.net/m0_51390535/article/details/126978552?spm=1001.2014.3001.5501](https://blog.csdn.net/m0_51390535/article/details/126978552?spm=1001.2014.3001.5501)
 
 ```shell
 git init  // 初始化仓库
@@ -78,7 +78,6 @@ git status  //查看状态，检查用到
 ## 团队开发操作git
 
 ### 成员需要怎么做
-
 首先我们有一个共同开发的仓库。项目组长已经把框架建好。
 
 小组成员此时本地还没有本项目，所以就需要从组长仓库中拉去代码到本地。
@@ -89,7 +88,9 @@ git status  //查看状态，检查用到
 git init
 git remote add origin https://github.com/gcb1120/google2022.git
 #这就表示本地已经关联到远端。接着就是拉代码
-# 先切换分知道develop
+#更新出远程分支索引
+git fetch
+# 先切换分支到develop
 git checkout develop
 git pull --rebase origin develop
 ```
