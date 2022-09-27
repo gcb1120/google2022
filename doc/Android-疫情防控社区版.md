@@ -80,6 +80,10 @@ git merge --no-ff -m "合并的信息" develop
 
 ```shell
 git pull --rebase origin main
+
+#切换仓库
+git remote rm origin
+git remote add origin https://github.com/gcb1120/google2022.git
 ```
 
 # 团队开发操作git
