@@ -82,6 +82,22 @@ git merge --no-ff -m "合并的信息" develop
 git pull --rebase origin main
 ```
 
+# 团队开发操作git
+
+## 成员需要怎么做
+首先我们有一个共同开发的仓库。项目组长已经把框架建好。
+
+小组成员此时本地还没有本项目，所以就需要从组长仓库中拉去代码到本地。
+首先小组成员在本地找个合适的文件夹进入文件夹打开git bash 进入git面板操作git
+下面是从远端拉取代码流程命令：
+```shell
+git init
+git remote add origin https://github.com/gcb1120/google2022.git
+#这就表示本地已经关联到远端。接着就是拉代码
+# 先切换分知道develop
+git checkout develop
+git pull --rebase origin develop
+```
 
 
 
