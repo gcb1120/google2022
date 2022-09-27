@@ -60,6 +60,7 @@ git branch --set-upstream-to=origin/develop develop
 ~~~
 
 ## 个人开发使用git完整指令
+来自csdn：[https://blog.csdn.net/m0_51390535/article/details/126978552?spm=1001.2014.3001.5501](https://blog.csdn.net/m0_51390535/article/details/126978552?spm=1001.2014.3001.5501)
 
 ```shell
 git init  // 初始化仓库
