@@ -94,7 +94,7 @@ git fetch
 git checkout develop
 git pull --rebase origin develop
 ```
-
+更多详情：[https://blog.csdn.net/m0_46636892/article/details/122985420](https://blog.csdn.net/m0_46636892/article/details/122985420)
 ## 分支的合并
 
 git merge和git rebase两个命令来进行分支的合并。
