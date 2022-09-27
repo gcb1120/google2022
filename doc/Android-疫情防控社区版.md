@@ -29,9 +29,6 @@ git add .
 #上传代码到中间缓存区 
 git commit -m "备注信息"
 
-#上传代码到远程仓库（例如：Gitee） 
-git push
-
 #git清理被删除远程分支在本地库的缓存 
 #使用git过程中，如果远程分支被删除，在本地使用git branch -a还是可以看到这些被删除分支。可以通过git remote prune 命令实现清理
 git remote prune origin 
@@ -40,7 +37,7 @@ git remote prune origin
 git fetch
 ```
 
-https://blog.csdn.net/A12115419/article/details/116116418
+查看详情：[https://blog.csdn.net/A12115419/article/details/116116418](https://blog.csdn.net/A12115419/article/details/116116418)
 
 ```shell
 #创建分支
@@ -57,6 +54,9 @@ git checkout -b 分支名
 
 新建本地分支与远程分支关联
 git branch --set-upstream-to=origin/develop develop
+
+#上传代码到远程仓库（例如：Gitee） 
+git push
 ~~~
 
 ## 个人开发使用git完整指令
