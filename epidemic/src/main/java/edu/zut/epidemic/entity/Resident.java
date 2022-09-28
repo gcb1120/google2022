@@ -62,6 +62,7 @@ public class Resident implements Serializable {
      */
     private String sex;
 
+    private Integer age;
     /**
      * 邮件
      */
