@@ -2,6 +2,7 @@ package edu.zut.epidemic.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import edu.zut.epidemic.common.Result;
 import edu.zut.epidemic.entity.Resident;
@@ -90,26 +91,55 @@ public class ResidentController {
     /**
      * mp分页查询
      *
-     * @param pageNum
-     * @param pageSize
+     * @param pageNum 当前页码
+     * @param pageSize 每页数据条数
      * @param name     姓名
      * @param phone    手机号
      * @param idNumber 身份证
-     * @return
+     * @param age 年龄
+     * @return Result
      */
     @GetMapping("/page")
     public Result findPage(@RequestParam Integer pageNum,
                            @RequestParam Integer pageSize,
                            @RequestParam(defaultValue = "") String name,
                            @RequestParam(defaultValue = "") String phone,
-                           @RequestParam(defaultValue = "") String idNumber) {
-        log.info("当前页码：{}，分页大小：{}", pageNum, pageSize);
+                           @RequestParam(defaultValue = "") String idNumber,
+                           @RequestParam(defaultValue = "") Integer age) {
+
+        IPage<Resident> page = new Page<>(pageNum, pageSize);
+
         LambdaQueryWrapper<Resident> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.like(Strings.isNotEmpty(name), Resident::getName, name);
         queryWrapper.like(Strings.isNotEmpty(phone), Resident::getPhone, phone);
         queryWrapper.like(Strings.isNotEmpty(idNumber), Resident::getIdNumber, idNumber);
+        // 筛选大于age的list
+        queryWrapper.ge(Strings.isNotEmpty(Integer.toString(age)), Resident::getAge, age);
         queryWrapper.orderByDesc(Resident::getUpdateTime);
-        return Result.success(residentService.page(new Page<>(pageNum, pageSize), queryWrapper));
+
+        IPage<Resident> residentIPage = residentService.page(page, queryWrapper);
+        log.info("当前页码：{}，分页大小：{}，数据条数：{},数据总页数：{}", pageNum, pageSize, page.getTotal(), page.getPages());
+        return Result.success(residentIPage);
+
     }
+
+    /**
+     * 通过年龄筛选居民
+     *
+     * @param age 年龄
+     * @return
+     */
+    @GetMapping("/get/{age}")
+    public Result getAllByAge(@PathVariable Integer age) {
+
+        LambdaQueryWrapper<Resident> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.ge(Resident::getAge, age);
+        queryWrapper.orderByDesc(Resident::getAge);
+
+        return Result.success(residentService.list(queryWrapper));
+
+    }
+
+
 }
 
