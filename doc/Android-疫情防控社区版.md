@@ -99,6 +99,8 @@ git push -u origin "你的分支名" #去掉冒号
     #4。然后查看状态及执行提交命令
     git status
     git push origin develop
+# 最后别忘了切换回自己的分支
+git checkout roydon
 ```
 
 
