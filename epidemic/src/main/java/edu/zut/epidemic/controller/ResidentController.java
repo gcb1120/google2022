@@ -8,6 +8,7 @@ import edu.zut.epidemic.entity.Resident;
 import edu.zut.epidemic.service.IResidentService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -32,11 +33,14 @@ public class ResidentController {
     /**
      * 新增或者更新
      *
-     * @param resident
+     * @param resident 居民实体
      * @return
      */
     @PostMapping
     public Result save(@RequestBody Resident resident) {
+
+        //密码password进行md5加密处理
+        resident.setPassword(DigestUtils.md5DigestAsHex(resident.getPassword().getBytes()));
         return Result.success(residentService.saveOrUpdate(resident));
     }
 
