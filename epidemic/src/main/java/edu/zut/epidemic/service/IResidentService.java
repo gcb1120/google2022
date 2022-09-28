@@ -2,6 +2,7 @@ package edu.zut.epidemic.service;
 
 import edu.zut.epidemic.entity.Resident;
 import com.baomidou.mybatisplus.extension.service.IService;
+import edu.zut.epidemic.entity.dto.ResidentDTO;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IResidentService extends IService<Resident> {
 
+    Resident register(ResidentDTO residentDTO);
 }
