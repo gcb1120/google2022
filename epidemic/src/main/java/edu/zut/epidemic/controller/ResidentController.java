@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import edu.zut.epidemic.common.Result;
 import edu.zut.epidemic.entity.Resident;
+import edu.zut.epidemic.entity.dto.ResidentDTO;
 import edu.zut.epidemic.service.IResidentService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
@@ -13,6 +14,7 @@ import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -30,6 +32,23 @@ public class ResidentController {
 
     @Resource
     private IResidentService residentService;
+
+
+    /**
+     * 居民注册接口
+     *
+     * @param residentDTO 安全实体
+     * @return
+     */
+    @PostMapping("/register")
+    public Result register(@RequestBody ResidentDTO residentDTO) {
+
+        residentDTO.setUpdateTime(LocalDateTime.now());
+        residentDTO.setPassword(DigestUtils.md5DigestAsHex(residentDTO.getPassword().getBytes()));
+
+        return Result.success(residentService.register(residentDTO));
+    }
+
 
     /**
      * 新增或者更新
@@ -91,12 +110,12 @@ public class ResidentController {
     /**
      * mp分页查询
      *
-     * @param pageNum 当前页码
+     * @param pageNum  当前页码
      * @param pageSize 每页数据条数
      * @param name     姓名
      * @param phone    手机号
      * @param idNumber 身份证
-     * @param age 年龄
+     * @param age      年龄
      * @return Result
      */
     @GetMapping("/page")
