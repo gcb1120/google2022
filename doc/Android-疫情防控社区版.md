@@ -61,7 +61,7 @@ git remote add origin https://github.com/gcb1120/google2022.git
 git fetch
 #git清理被删除远程分支在本地库的缓存 
 #使用git过程中，如果远程分支被删除，在本地使用git branch -a还是可以看到这些被删除分支。可以通过git remote prune 命令实现清理
-git remote prune origin 
+git remote prune origin #非必要不执行
 
 # 先切换分支到develop
 git checkout develop
