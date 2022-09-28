@@ -70,9 +70,11 @@ public class ResidentController {
      * @param id
      * @return
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/del/{id}")
     public Result delete(@PathVariable Integer id) {
-        return Result.success(residentService.removeById(id));
+        boolean flag = residentService.removeById(id);
+
+        return Result.success(flag ? "删除成功" : "数据不存在无需删除", flag);
     }
 
     /**
@@ -83,7 +85,8 @@ public class ResidentController {
      */
     @DeleteMapping("/del/batch")
     public Result deleteBatch(@RequestBody List<Integer> ids) {
-        return Result.success(residentService.removeByIds(ids));
+        boolean flag = residentService.removeByIds(ids);
+        return Result.success(flag ? "批量删除成功":"数据不存在无需删除",flag );
     }
 
     /**
