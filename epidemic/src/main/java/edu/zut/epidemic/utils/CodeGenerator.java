@@ -14,27 +14,27 @@ import java.util.Collections;
  **/
 public class CodeGenerator {
     public static void main(String[] args) {
-        generate();
+//        generate();
     }
 
     private static void generate() {
-        FastAutoGenerator.create("jdbc:mysql://localhost:3306/{}?serverTimezone=GMT%2b8", "root", "qwer1234")
+        FastAutoGenerator.create("jdbc:mysql://localhost:3306/a_db_epc?serverTimezone=GMT%2b8", "root", "qwer1234")
                 .globalConfig(builder -> {
                     builder.author("roydon") // 设置作者
                             .fileOverride() // 覆盖已生成文件
-                            .outputDir("D:\\JAVA\\IDEA\\IDEAProjects\\spring-vue-first\\springboot\\src\\main\\java\\"); // 指定输出目录
+                            .outputDir("D:\\JAVA\\IDEA\\IDEAProjects\\prevent-control\\epidemic\\src\\main\\java\\"); // 指定输出目录
                 })
                 .packageConfig(builder -> {
-                    builder.parent("roydon.xyz.springboot") // 设置父包名
+                    builder.parent("edu.zut.epidemic") // 设置父包名
                             .moduleName(null) // 设置父包模块名
-                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "D:\\JAVA\\IDEA\\IDEAProjects\\spring-vue-first\\springboot\\src\\main\\resources\\mapper\\")); // 设置mapperXml生成路径
+                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "D:\\JAVA\\IDEA\\IDEAProjects\\prevent-control\\epidemic\\src\\main\\resources\\mapper\\")); // 设置mapperXml生成路径
                 })
                 .strategyConfig(builder -> {
                     builder.entityBuilder().enableLombok();
 //                    builder.mapperBuilder().enableMapperAnnotation().build();
                     builder.controllerBuilder().enableHyphenStyle()  // 开启驼峰转连字符
                             .enableRestStyle();  // 开启生成@RestController 控制器
-                    builder.addInclude("sys_menu") // 设置需要生成的表名
+                    builder.addInclude("sys_resident") // 设置需要生成的表名
                             .addTablePrefix("t_", "sys_"); // 设置过滤表前缀
                 })
 //                .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
