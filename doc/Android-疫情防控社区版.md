@@ -8,30 +8,38 @@
 
 ```shell
 
-ls(ll): 都是列出当前目录中的所有文件，只不过ll(两个ll)列出的内容更为详细。
-touch : 新建一个文件 如 touch index.js 就会在当前目录下新建一个index.js文件。
-rm: 删除一个文件, rm index.js 就会把index.js文件删除。
-mkdir: 新建一个目录,就是新建一个文件夹。
-rm -r : 删除一个文件夹, rm -r src 删除src目录
-mv 移动文件, mv index.html src index.html 是我们要移动的文件, src 是目标文件夹,当然, 这样写,必须保证文件和目标文件夹在同一目录下。
-reset 重新初始化终端/清屏。
-clear 清屏。
-history 查看命令历史。
-exit 退出。
+ls(ll)  #都是列出当前目录中的所有文件，只不过ll(两个ll)列出的内容更为详细。
+touch   #新建一个文件 如 touch index.js 就会在当前目录下新建一个index.js文件。
+rm      #删除一个文件, rm index.js 就会把index.js文件删除。
+mkdir   #新建一个目录,就是新建一个文件夹。
+rm -r   #删除一个文件夹, rm -r src 删除src目录
+mv      #移动文件, mv index.html src index.html 是我们要移动的文件, src 是目标文件夹,当然, 这样写,必须保证文件和目标文件夹在同一目录下。
+reset   #重新初始化终端/清屏。
+clear   #清屏。
+history #查看命令历史。
+exit    #退出。
 ```
 
 
 ## 个人开发使用git完整指令
 
 ```shell
-git init  // 初始化仓库
-git add .  // 本地文件添加到本地缓存区（注意是’add .‘，点表示添加所有此目录下的文件）
-git commit -m "描述"  // 提交到本地缓存区，描述任意写
-git remote add origin "地址"  // 添加远端地址,此处的地址改为github复制过来的地址，例如：https://github.com/roydonGuo/MyBlog-Spring.git
-git checkout -b main // 切换分支为main
-git pull --rebase origin main  //下拉查看是否有内容
-git push -u origin main  //推送到main分支
-git status  //查看状态，检查用到
+#初始化仓库
+git init
+#本地文件添加到本地缓存区（注意是’add .‘，点表示添加所有此目录下的文件）
+git add .
+#提交到本地缓存区，描述任意写
+git commit -m "描述"
+#添加远端地址,此处的地址改为github复制过来的地址。
+git remote add origin "地址"
+#切换分支为main
+git checkout -b main
+#下拉查看是否有内容
+git pull --rebase origin main
+#推送到main分支
+git push -u origin main
+#查看状态，检查用到
+git status
 ```
 
 ```shell
