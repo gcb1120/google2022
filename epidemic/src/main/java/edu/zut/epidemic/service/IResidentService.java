@@ -15,4 +15,7 @@ import edu.zut.epidemic.entity.dto.ResidentDTO;
 public interface IResidentService extends IService<Resident> {
 
     Resident register(ResidentDTO residentDTO);
+
+
+//    Resident addUniqueResident(ResidentDTO residentDTO);
 }
