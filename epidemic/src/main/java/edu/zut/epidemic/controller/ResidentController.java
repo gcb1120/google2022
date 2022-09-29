@@ -53,15 +53,15 @@ public class ResidentController {
     /**
      * 新增或者更新
      *
-     * @param resident 居民实体
+     * @param residentDTO 居民实体
      * @return
      */
-    @PostMapping
-    public Result save(@RequestBody Resident resident) {
+    @PostMapping("/add")
+    public Result save(@RequestBody ResidentDTO residentDTO) {
 
         //密码password进行md5加密处理
-        resident.setPassword(DigestUtils.md5DigestAsHex(resident.getPassword().getBytes()));
-        return Result.success(residentService.saveOrUpdate(resident));
+        residentDTO.setPassword(DigestUtils.md5DigestAsHex(residentDTO.getPassword().getBytes()));
+        return Result.success(residentService.register(residentDTO));
     }
 
     /**
