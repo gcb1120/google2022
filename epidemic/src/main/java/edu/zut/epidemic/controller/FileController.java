@@ -6,13 +6,13 @@ import cn.hutool.core.util.StrUtil;
 import edu.zut.epidemic.common.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
@@ -54,4 +54,44 @@ public class FileController {
 
         return Result.success(fileUUIDName);
     }
+
+
+    /**
+     * 文件下载并响应回浏览器
+     *
+     * @param fileUUIDName
+     * @param response
+     */
+    @GetMapping("/download")
+    public void download(@RequestParam("name") String fileUUIDName, HttpServletResponse response) {
+
+        try {
+            // 输入流读取文件
+            FileInputStream fileInputStream = new FileInputStream(new File(uploadPath + fileUUIDName));
+            // 输出流写入文件到浏览器
+            ServletOutputStream outputStream = response.getOutputStream();
+
+            // 代表响应文件为图片
+            response.setContentType("image/jpeg");
+
+            //开始读取
+            int len = 0;
+            byte[] bytes = new byte[1024];
+
+            while ((len = fileInputStream.read(bytes)) != -1) {
+                outputStream.write(bytes, 0, len);
+                outputStream.flush();// 刷新
+            }
+            // 关闭流
+            outputStream.close();
+            fileInputStream.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
 }
