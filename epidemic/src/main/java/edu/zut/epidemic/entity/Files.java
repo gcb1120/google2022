@@ -19,10 +19,14 @@ public class Files {
     private Integer id;
     private String name;
     private String type;
+
+    // 单位K
     private Long size;
     private String url;
     private String md5;
+    // 是否被删除
     private Boolean isDelete;
+    // 禁用？
     private Boolean enable;
 
 }
