@@ -150,6 +150,7 @@ public class FileController {
 
     /**
      * 根据id删除文件
+     *
      * @param id
      * @return
      */
@@ -163,6 +164,7 @@ public class FileController {
 
     /**
      * 批量删除
+     *
      * @param ids
      * @return
      */
@@ -176,7 +178,7 @@ public class FileController {
             file.setIsDelete(true);
             fileMapper.updateById(file);
         }
-        return Result.success();
+        return Result.success("删除成功",ids);
     }
 
     /**
