@@ -121,7 +121,19 @@ git checkout roydon
 
 ali云短信服务：[https://www.aliyun.com/product/sms](https://www.aliyun.com/product/sms)
 - 用于手机短信验证登录
-
+```xml
+<!--阿里云短信服务-->
+<dependency>
+    <groupId>com.aliyun</groupId>
+    <artifactId>aliyun-java-sdk-core</artifactId>
+    <version>4.5.16</version>
+</dependency>
+<dependency>
+    <groupId>com.aliyun</groupId>
+    <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+    <version>2.1.0</version>
+</dependency>
+```
 
 
 
