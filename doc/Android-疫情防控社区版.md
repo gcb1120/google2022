@@ -119,7 +119,8 @@ git checkout roydon
 
 # TODO 3 springboot项目后台搭建
 
-
+ali云短信服务：[https://www.aliyun.com/product/sms](https://www.aliyun.com/product/sms)
+- 用于手机短信验证登录
 
 
 
