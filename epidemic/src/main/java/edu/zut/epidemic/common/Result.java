@@ -43,8 +43,6 @@ public class Result<T> {
         return new Result(Constants.CODE_500, "系统错误", null,null);
     }
 
-
-
 //    public static <T> Result<T> success(T object) {
 //        Result<T> r = new Result<T>();
 //        r.data = object;
