@@ -78,7 +78,6 @@ public class Resident implements Serializable {
      */
     private LocalDateTime createTime;
 
-
     /**
      * 更新时间
      */
